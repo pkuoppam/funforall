@@ -8,11 +8,12 @@
   $request = str_replace($config['urls']['baseUrl'],'',$_SERVER['REQUEST_URI']);
   $request = strtok($request, '?');
 
-   // Luodaan uusi Plates-olio ja kytketään se sovelluksen sivupohjiin.
-   $templates = new League\Plates\Engine('../src/view');
+  // Luodaan uusi Plates-olio ja kytketään se sovelluksen sivupohjiin.
+  $templates = new League\Plates\Engine(TEMPLATE_DIR);
 
-   // Selvitetään mitä sivua on kutsuttu ja suoritetaan sivua vastaava
-   // käsittelijä.
+
+  // Selvitetään mitä sivua on kutsuttu ja suoritetaan sivua vastaava
+  // käsittelijä.
   if ($request === '/' || $request === '/laitteet') {
     echo $templates->render('laitteet');
     } else if ($request === '/laite') {
