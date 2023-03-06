@@ -8,14 +8,17 @@
   $request = str_replace($config['urls']['baseUrl'],'',$_SERVER['REQUEST_URI']);
   $request = strtok($request, '?');
 
-  // Selvitetään mitä sivua on kutsuttu ja suoritetaan sivua vastaava 
-  // käsittelijä.
+   // Luodaan uusi Plates-olio ja kytketään se sovelluksen sivupohjiin.
+   $templates = new League\Plates\Engine('../src/view');
+
+   // Selvitetään mitä sivua on kutsuttu ja suoritetaan sivua vastaava
+   // käsittelijä.
   if ($request === '/' || $request === '/laitteet') {
-    echo '<h1>Kaikki laitteet</h1>';
+    echo $templates->render('laitteet');
     } else if ($request === '/laite') {
-    echo '<h1>Yksittäisen laitteen tiedot</h1>';
+      echo $templates->render('laite');
   } else {
-    echo '<h1>Pyydettyä sivua ei löytynyt :(</h1>';
+    echo $templates->render('notfound');
   }
 
 ?> 
