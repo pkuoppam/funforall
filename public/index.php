@@ -19,7 +19,13 @@
     $laitteet = haeLaitteet();
     echo $templates->render('laitteet',['laitteet' => $laitteet]);
   } else if ($request === '/laite') {
-      echo $templates->render('laite');
+    require_once MODEL_DIR . 'laite.php';
+    $laite = haeLaite($_GET['id']);
+    if ($laite) {
+      echo $templates->render('laite',['laite' => $laite]);
+    } else {
+      echo $templates->render('laitenotfound');
+    }
   } else {
     echo $templates->render('notfound');
   }

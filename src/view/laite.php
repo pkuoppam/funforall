@@ -1,3 +1,6 @@
-<?php $this->layout('template', ['title' => 'Laitteen tiedot']) ?>
+<?php $this->layout('template', ['title' => $laite['nimi']]) ?>
 
-<h1>Laitteen tiedot</h1>
+
+
+<h1><?=$laite['nimi']?></h1>
+<div><?=$laite['kuvaus']?></div>

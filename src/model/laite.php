@@ -6,4 +6,8 @@
     return DB::run('SELECT * FROM laitteet ORDER BY nimi;')->fetchAll();
   }
 
+  function haeLaite($id) {
+    return DB::run('SELECT * FROM laitteet WHERE idvaraus = ?;',[$id])->fetch();
+  }
+
 ?>
