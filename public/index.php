@@ -15,8 +15,10 @@
   // Selvitetään mitä sivua on kutsuttu ja suoritetaan sivua vastaava
   // käsittelijä.
   if ($request === '/' || $request === '/laitteet') {
-    echo $templates->render('laitteet');
-    } else if ($request === '/laite') {
+    require_once MODEL_DIR . 'laite.php';
+    $laitteet = haeLaitteet();
+    echo $templates->render('laitteet',['laitteet' => $laitteet]);
+  } else if ($request === '/laite') {
       echo $templates->render('laite');
   } else {
     echo $templates->render('notfound');
