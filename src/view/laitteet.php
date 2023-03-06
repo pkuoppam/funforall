@@ -7,13 +7,11 @@
 
 foreach ($laitteet as $laite) {
 
-  //$start = new DateTime($tapahtuma['tap_alkaa']);
-  //$end = new DateTime($tapahtuma['tap_loppuu']);
+ echo "<div>";
+  echo "<div>$laite[nimi]</div>";
+  echo "<div><a href='laite?id=" . $laite['idvaraus'] . "'>TIEDOT</a></div>";
+echo "</div>";
 
-  echo "<div>";
-    echo "<div>$laite[nimi]</div>";
-    //echo "<div>" . $start->format('j.n.Y') . "-" . $end->format('j.n.Y') . "</div>";
-  echo "</div>";
 
 }
 
