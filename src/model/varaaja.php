@@ -15,4 +15,12 @@
     return DB::run('SELECT * FROM varaaja WHERE email = ?;', [$email])->fetch();
   }
 
+  function paivitaVahvavain($email,$avain) {
+    return DB::run('UPDATE varaaja SET vahvavain = ? WHERE email = ?', [$avain,$email])->rowCount();
+  }
+
+  function vahvistaTili($avain) {
+    return DB::run('UPDATE varaaja SET vahvistettu = TRUE WHERE vahvavain = ?', [$avain])->rowCount();
+  }
+
 ?>

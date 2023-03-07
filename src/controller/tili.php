@@ -1,6 +1,7 @@
 <?php
 
-function lisaaTili($formdata) {
+function lisaaTili($formdata, $baseurl='') {
+
 
   // Tuodaan varaaja-mallin funktiot, joilla voidaan lisätä
   // henkilön tiedot tietokantaan.
@@ -33,7 +34,7 @@ function lisaaTili($formdata) {
     if (!filter_var($formdata['email'], FILTER_VALIDATE_EMAIL)) {
       $error['email'] = "Sähköpostiosoite on virheellisessä muodossa.";
     } else {
-        if (haeHenkiloSahkopostilla($formdata['email'])) {
+        if (haeVaraajaSahkopostilla($formdata['email'])) {
           $error['email'] = "Sähköpostiosoite on jo käytössä.";
         }
       }
@@ -73,7 +74,7 @@ function lisaaTili($formdata) {
     $salasana = password_hash($formdata['salasana1'], PASSWORD_DEFAULT);
 
     // Lisätään henkilö tietokantaan. Jos lisäys onnistui,
-    // tulee palautusarvona lisätyn henkilön id-tunniste.
+    // tulee palautusarvona lisätyn varaajan id-tunniste.
     $idvaraaja = lisaaVaraaja($nimi,$email,$puhelin,$salasana);
 
     // Palautetaan JSON-tyyppinen taulukko, jossa:
@@ -84,29 +85,41 @@ function lisaaTili($formdata) {
     //             400 = Bad Request
     //             500 = Internal Server Error
     //  id       = Lisätyn rivin id-tunniste.
-    //  formdata = Lisättävän henkilön lomakedata. Sama, mitä
+    //  formdata = Lisättävän varaajan lomakedata. Sama, mitä
     //             annettiin syötteenä.
     //  error    = Taulukko, jossa on lomaketarkistuksessa
     //             esille tulleet virheet.
 
     // Tarkistetaan onnistuiko henkilön tietojen lisääminen.
-    // Jos idvaraaja-muuttujassa on positiivinen arvo,
+    // Jos idhenkilo-muuttujassa on positiivinen arvo,
     // onnistui rivin lisääminen. Muuten liäämisessä ilmeni
     // ongelma.
     if ($idvaraaja) {
-      return [
-        "status" => 200,
-        "id"     => $idvaraaja,
-        "data"   => $formdata
-      ];
-    } else {
-      return [
-        "status" => 500,
-        "data"   => $formdata
-      ];
-    }
 
-  } else {
+        // Luodaan käyttäjälle aktivointiavain ja muodostetaan
+        // aktivointilinkki.
+        require_once(HELPERS_DIR . "secret.php");
+        $avain = generateActivationCode($email);
+        $url = 'https://' . $_SERVER['HTTP_HOST'] . $baseurl . "/vahvista?key=$avain";
+  
+        // Päivitetään aktivointiavain tietokantaan ja lähetetään
+        // käyttäjälle sähköpostia. Jos tämä onnistui, niin palautetaan
+        // palautusarvona tieto tilin onnistuneesta luomisesta. Muuten
+        // palautetaan virhekoodi, joka ilmoittaa, että jokin
+        // lisäyksessä epäonnistui.
+        if (paivitaVahvavain($email,$avain) && lahetaVahvavain($email,$url)) {
+          return [
+            "status" => 200,
+            "id"     => $idvaraaja,
+            "data"   => $formdata
+          ];
+        } else {
+          return [
+            "status" => 500,
+            "data"   => $formdata
+          ];
+        }
+      } else {
 
     // Lomaketietojen tarkistuksessa ilmeni virheitä.
     return [
@@ -117,5 +130,20 @@ function lisaaTili($formdata) {
 
   }
 }
-
+}
+function lahetaVahvavain($email,$url) {
+    $message = "Hei!\n\n" . 
+               "Olet rekisteröitynyt Fun For All-palveluun tällä\n" . 
+               "sähköpostiosoitteella. Klikkaamalla alla olevaa\n" . 
+               "linkkiä vahvistat käyttämäsi sähköpostiosoitteen\n" .
+               "ja pääset käyttämään Fun For All-palvelua.\n\n" . 
+               "$url\n\n" .
+               "Jos et ole rekisteröitynyt Fun For All palveluun, niin\n" . 
+               "silloin tämä sähköposti on tullut sinulle\n" .
+               "vahingossa. Siinä tapauksessa ole hyvä ja\n" .
+               "poista tämä viesti.\n\n".
+               "Terveisin, -Fun For All-";
+    return mail($email,'FunForAll-tilin aktivointilinkki',$message);
+  }
+  
 ?>
