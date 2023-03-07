@@ -69,16 +69,22 @@
       if (isset($_POST['laheta'])) {
         require_once CONTROLLER_DIR . 'kirjaudu.php';
         if (tarkistaKirjautuminen($_POST['email'],$_POST['salasana'])) {
-          session_regenerate_id();
-          $_SESSION['user'] = $_POST['email'];
-          header("Location: " . $config['urls']['baseUrl']);
+          require_once MODEL_DIR . 'varaaja.php';
+          $user = haeVaraaja($_POST['email']);
+          if ($user['vahvistettu']) {
+            session_regenerate_id();
+            $_SESSION['user'] = $user['email'];
+            header("Location: " . $config['urls']['baseUrl']);
+          } else {
+            echo $templates->render('kirjaudu', [ 'error' => ['virhe' => 'Tili on vahvistamatta! Ole hyvä, ja vahvista tili sähköpostissa olevalla linkillä.']]);
+          }
         } else {
           echo $templates->render('kirjaudu', [ 'error' => ['virhe' => 'Väärä käyttäjätunnus tai salasana!']]);
         }
-        } else {
-          echo $templates->render('kirjaudu', [ 'error' => []]);
-        }
-        break;
+      } else {
+        echo $templates->render('kirjaudu', [ 'error' => []]);
+      }
+      break;
     case "/logout":
         require_once CONTROLLER_DIR . 'kirjaudu.php';
           logout();
