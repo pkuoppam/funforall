@@ -14,22 +14,28 @@
 
   // Selvitetään mitä sivua on kutsuttu ja suoritetaan sivua vastaava
   // käsittelijä.
-  if ($request === '/' || $request === '/laitteet') {
-    require_once MODEL_DIR . 'laite.php';
-    $laitteet = haeLaitteet();
-    echo $templates->render('laitteet',['laitteet' => $laitteet]);
-  } else if ($request === '/laite') {
-    require_once MODEL_DIR . 'laite.php';
-    $laite = haeLaite($_GET['id']);
-    if ($laite) {
-      echo $templates->render('laite',['laite' => $laite]);
-    } else {
-      echo $templates->render('laitenotfound');
-    }
-  } else if ($request === '/lisaa_tili') {
-    echo $templates->render('lisaa_tili');
-  } else {
-    echo $templates->render('notfound');
-  }
+  switch ($request) {
+    case '/':
+    case '/laitteet':
+      require_once MODEL_DIR . 'laite.php';
+      $laitteet = haeLaitteet();
+      echo $templates->render('laitteet',['laitteet' => $laitteet]);
+      break;
+    case '/laite':
+      require_once MODEL_DIR . 'laite.php';
+      $laite = haeLaite($_GET['id']);
+      if ($laite) {
+        echo $templates->render('laite',['laite' => $laite]);
+      } else {
+        echo $templates->render('laitenotfound');
+      }
+      break;
+    case '/lisaa_tili':
+      echo $templates->render('lisaa_tili');
+      break;
+    default:
+      echo $templates->render('notfound');
+  }    
+
 
 ?> 
