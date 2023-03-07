@@ -7,4 +7,8 @@
     return DB::lastInsertId();
   }
 
+  function haeHenkiloSahkopostilla($email) {
+    return DB::run('SELECT * FROM varaukset WHERE email = ?;', [$email])->fetchAll();
+  }
+
 ?>
