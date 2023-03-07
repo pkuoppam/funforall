@@ -23,4 +23,16 @@
     return DB::run('UPDATE varaaja SET vahvistettu = TRUE WHERE vahvavain = ?', [$avain])->rowCount();
   }
 
+  function asetaVaihtoavain($email,$avain) {
+    return DB::run('UPDATE varaaja SET nollausavain = ?, nollausaika = NOW() + INTERVAL 30 MINUTE WHERE email = ?', [$avain,$email])->rowCount();
+  }
+
+  function tarkistaVaihtoavain($avain) {
+    return DB::run('SELECT nollausavain, nollausaika-NOW() AS aikaikkuna FROM varaaja WHERE nollausavain = ?', [$avain])->fetch();
+  }
+
+  function vaihdaSalasanaAvaimella($salasana,$avain) {
+    return DB::run('UPDATE varaaja SET salasana = ?, nollausavain = NULL, nollausaika = NULL WHERE nollausavain = ?', [$salasana,$avain])->rowCount();
+  }
+
 ?>
