@@ -8,11 +8,11 @@
 <?php
   if ($loggeduser) {
     if (!$varaukset) {
-      echo "<div class='flexarea'><a href='ilmoittaudu?id=$laite[idlaitteet]' class='button'>VARAA LAITE</a></div>"; 
+      echo "<div class='flexarea'><a href='tee_varaus?id=$laite[idlaitteet]' class='button'>VARAA LAITE</a></div>"; 
   } else {
     echo "<div class='flexarea'>";
-    echo "<div>Olet ilmoittautunut tapahtumaan!</div>";
-    echo "<a href='peru?id=$laite[idlaitteet]' class='button'>PERU VARAUS</a>";
+    echo "<div>Olet varannut laitteen käyttöösi!<br>Olemme yhteydessä, kun laite vapaana.</div><br>";
+    echo "<a href='peru_varaus?id=$laite[idlaitteet]' class='button'>PERU VARAUS</a>";
     echo "</div>";
   }
 }

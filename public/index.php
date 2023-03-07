@@ -84,6 +84,30 @@
           logout();
           header("Location: " . $config['urls']['baseUrl']);
         break;
+    case '/tee_varaus':
+        if ($_GET['id']) {
+          require_once MODEL_DIR . 'varaukset.php';
+          $idlaite = $_GET['id'];
+          if ($loggeduser) {
+            lisaaVaraukset($loggeduser['idvaraaja'],$idlaite);
+          }
+          header("Location: laite?id=$idlaite");
+        } else {
+          header("Location: laitteet");
+        }
+        break;
+      case '/peru_varaus':
+        if ($_GET['id']) {
+          require_once MODEL_DIR . 'varaukset.php';
+          $idlaite = $_GET['id'];
+          if ($loggeduser) {
+            poistaVaraukset($loggeduser['idvaraaja'],$idlaite);
+          }
+          header("Location: laite?id=$idlaite");
+        } else {
+          header("Location: laitteet");  
+        }
+        break;
     
   
     default:
