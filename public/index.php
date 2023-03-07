@@ -35,9 +35,17 @@
       break;
     case '/laite':
       require_once MODEL_DIR . 'laite.php';
+      require_once MODEL_DIR . 'varaukset.php';
       $laite = haeLaite($_GET['id']);
       if ($laite) {
-        echo $templates->render('laite',['laite' => $laite]);
+        if ($loggeduser) {
+          $varaukset = haeVaraukset($loggeduser['idvaraaja'],$laite['idlaitteet']);
+        } else {
+          $varaukset = NULL;
+        }
+        echo $templates->render('laite',['laite' => $laite,
+                                             'varaukset' => $varaukset,
+                                             'loggeduser' => $loggeduser]);
       } else {
         echo $templates->render('laitenotfound');
       }

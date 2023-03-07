@@ -7,7 +7,7 @@
   }
 
   function haeLaite($id) {
-    return DB::run('SELECT * FROM laitteet WHERE idvaraus = ?;',[$id])->fetch();
+    return DB::run('SELECT * FROM laitteet WHERE idlaitteet = ?;',[$id])->fetch();
   }
 
 ?>
