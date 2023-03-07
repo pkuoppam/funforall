@@ -2,8 +2,8 @@
 
   require_once HELPERS_DIR . 'DB.php';
 
-  function lisaaVaraaja($nimi,$puhelin,$email,$salasana) {
-    DB::run('INSERT INTO varaukset (nimi, puhelin, email, salasana) VALUE  (?,?,?,?);',[$nimi,$puhelin,$email,$salasana]);
+  function lisaaVaraaja($nimi,$email,$puhelin,$salasana) {
+    DB::run('INSERT INTO varaukset (nimi, email, puhelin, salasana) VALUE  (?,?,?,?);',[$nimi,$email,$puhelin,$salasana]);
     return DB::lastInsertId();
   }
 
