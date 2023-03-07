@@ -123,4 +123,13 @@ background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
   .info a {
     color: #1013c7;
   }
-  
+                          
+  header {                          
+    background-color: #B8BAC8;          
+    padding: 1rem 1.5rem;                 /* Tätä pitää muokata vielä, että saa kirjautumisen naviin!!*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;              
+    font-size: 0.8rem;
+  }
