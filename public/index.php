@@ -32,9 +32,10 @@
       break;
     case '/lisaa_tili':
       if (isset($_POST['laheta'])) {
-       require_once MODEL_DIR . 'varaaja.php';
-        $salasana = password_hash($_POST['salasana1'], PASSWORD_DEFAULT);
-        $id = lisaaVaraaja($_POST['nimi'],$_POST['puhelin'],$_POST['email'],$salasana);
+        $formdata = cleanArrayData($_POST); 
+        require_once MODEL_DIR . 'varaaja.php';
+        $salasana = password_hash($formdata['salasana1'], PASSWORD_DEFAULT);
+        $id = lisaaVaraaja($formdata['nimi'],$formdata['puhelin'],$formdata['email'],$salasana);
         echo "Tili on luotu tunnisteella $id";
         break;
         } else {
