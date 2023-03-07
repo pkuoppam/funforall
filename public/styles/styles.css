@@ -96,7 +96,7 @@ background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
     font-size: 1rem;
   }
   
-  input[type=submit] {
+  input[type=submit] .button {
     padding: 0.6rem 1.5rem;
     border-radius: 0.3rem;
     background-color: #bdbab7;
@@ -133,3 +133,15 @@ background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
     align-items: center;              
     font-size: 0.8rem;
   }
+
+  .flexarea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .button {
+    text-decoration: none;
+  }
+  
