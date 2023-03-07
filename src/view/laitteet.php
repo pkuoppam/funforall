@@ -8,9 +8,9 @@
 foreach ($laitteet as $laite) {
 
  echo "<div>";
-  echo "<div>$laite[nimi]</div>";
-  echo "<div><a href='laite?id=" . $laite['idvaraus'] . "'>TIEDOT</a></div>";
-echo "</div>";
+  //echo "<div>$laite[nimi]</div>";
+  echo "<a href='laite?id=" . $laite['idvaraus'] . "'>$laite[nimi]</a>";
+  echo "</div>";
 
 
 }

@@ -2,11 +2,12 @@
 <html lang="fi">
   <head>
     <title>FunForAll - <?=$this->e($title)?></title>
-    <meta charset="UTF-8">    
+    <meta charset="UTF-8"> 
+    <link href="styles/styles.css" rel="stylesheet">
   </head>
   <body>
   <header>
-      <h1><a href="<?=BASEURL?>">FunForAll</a></h1>
+      <h1><a href="<?=BASEURL?>"><img src="<?=BASEURL."/images/logo.jpg"?>" alt="Etusivu"></img></a></h1>
     </header>
     <section>
       <?=$this->section('content')?>
