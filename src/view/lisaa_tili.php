@@ -4,20 +4,12 @@
 
 <form action="" method="POST">
   <div>
-    <label for="etunimi">Etunimi:</label>
-    <input id="etunimi" type="text" name="etuninimi">
-  </div>
-  <div>
-    <label for="sukunimi">Sukunimi:</label>
-    <input id="sukunimi" type="text" name="sukunimi">
+    <label for="nimi">Nimi:</label>
+    <input id="nimi" type="text" name="nimi">
   </div>
   <div>
     <label for="puhelin">Puhelin numero:</label>
     <input id="puhelin" type="text" name="puhelin">
-  </div>
-  <div>
-    <label for="synaika">Syntymäaika:</label>
-    <input id="synaika" type="text" name="synaika">
   </div>
   <div>
     <label for="email">Sähköposti:</label>

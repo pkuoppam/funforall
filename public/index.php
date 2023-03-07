@@ -31,8 +31,16 @@
       }
       break;
     case '/lisaa_tili':
-      echo $templates->render('lisaa_tili');
-      break;
+      if (isset($_POST['laheta'])) {
+       require_once MODEL_DIR . 'varaaja.php';
+        $salasana = password_hash($_POST['salasana1'], PASSWORD_DEFAULT);
+        $id = lisaaVaraaja($_POST['nimi'],$_POST['puhelin'],$_POST['email'],$salasana);
+        echo "Tili on luotu tunnisteella $id";
+        break;
+        } else {
+          echo $templates->render('lisaa_tili');
+          break;
+        }
     default:
       echo $templates->render('notfound');
   }    
