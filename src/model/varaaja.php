@@ -7,8 +7,12 @@
     return DB::lastInsertId();
   }
 
-  function haeHenkiloSahkopostilla($email) {
+  function haeVaraajaSahkopostilla($email) {
     return DB::run('SELECT * FROM varaukset WHERE email = ?;', [$email])->fetchAll();
+  }
+
+  function haeVaraaja($email) {
+    return DB::run('SELECT * FROM varaukset WHERE email = ?;', [$email])->fetch();
   }
 
 ?>

@@ -1,11 +1,10 @@
 <?php
 
-  function tarkistaKirjautuminen($email="", $salasana="") {
+function tarkistaKirjautuminen($email="", $salasana="") {
 
-    // Haetaan käyttäjän tiedot sen sähköpostiosoitteella. 
+    // Haetaan käyttäjän tiedot sen sähköpostiosoitteella.
     require_once(MODEL_DIR . 'varaaja.php');
-    $tiedot = haeHenkiloSahkopostilla($email);
-    $tiedot = array_shift($tiedot);
+    $tiedot = haeVaraaja($email);
 
     // Tarkistetaan ensin löytyikö käyttäjä. Jos löytyi, niin
     // tarkistetaan täsmäävätkö salasanat.
