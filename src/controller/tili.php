@@ -146,4 +146,48 @@ function lahetaVahvavain($email,$url) {
     return mail($email,'FunForAll-tilin aktivointilinkki',$message);
   }
   
+  function lahetaVaihtoavain($email,$url) {
+    $message = "Hei!\n\n" .
+               "Olet pyytänyt tilisi salasanan vaihtoa, klikkaamalla\n" .
+               "alla olevaa linkkiä pääset vaihtamaan salasanasi.\n" .
+               "Linkki on voimassa 30 minuuttia.\n\n" .
+               "$url\n\n" .
+               "Jos et ole pyytänyt tilisi salasanan vaihtoa, niin\n" .
+               "voit poistaa tämän viestin turvallisesti.\n\n" .
+               "Terveisin, -Fun For All-";
+    return mail($email,'FunForAll-tilin salasanan vaihtaminen',$message);
+  }
+  
+  function luoVaihtoavain($email, $baseurl='') {
+
+    // Luodaan käyttäjälle vaihtoavain ja muodostetaan
+    // vaihtolinkki.
+    require_once(HELPERS_DIR . "secret.php");
+    $avain = generateResetCode($email);
+    $url = 'https://' . $_SERVER['HTTP_HOST'] . $baseurl . "/reset?key=$avain";
+  
+    // Tuodaan varaaja-mallin funktiot, joilla voidaan lisätä
+    // vaihtoavaimen tiedot kantaan.
+    require_once(MODEL_DIR . 'varaaja.php');
+  
+    // Lisätään vaihtoavain tietokantaan ja lähetetään
+    // käyttäjälle sähköpostia. Jos tämä onnistui, niin palautetaan
+    // palautusarvona vaihtoavain ja sähköpostiosoite. Muuten
+    // palautetaan virhekoodi, joka ilmoittaa, että jokin lisäyksessä
+    // epäonnistui.
+    if (asetaVaihtoavain($email,$avain) && lahetaVaihtoavain($email,$url)) {
+      return [
+        "status"   => 200,
+        "email"    => $email,
+        "resetkey" => $avain
+      ];
+    } else {
+      return [
+        "status" => 500,
+        "email"   => $email
+      ];
+    }
+  
+  }
+  
 ?>
