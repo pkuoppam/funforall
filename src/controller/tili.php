@@ -119,6 +119,7 @@ function lisaaTili($formdata, $baseurl='') {
             "data"   => $formdata
           ];
         }
+      }
       } else {
 
     // Lomaketietojen tarkistuksessa ilmeni virheitä.
@@ -130,7 +131,7 @@ function lisaaTili($formdata, $baseurl='') {
 
   }
 }
-}
+
 function lahetaVahvavain($email,$url) {
     $message = "Hei!\n\n" . 
                "Olet rekisteröitynyt Fun For All-palveluun tällä\n" . 
