@@ -28,8 +28,9 @@
   // käsittelijä.
   switch ($request) {
     case '/':
-      echo $templates->render('etusivu');
-      break;
+    case '/etusivu':
+        echo $templates->render('etusivu');
+        break;
     case '/laitteet':
     require_once MODEL_DIR . 'laite.php';
       $laitteet = haeLaitteet();
@@ -204,21 +205,18 @@
         break;
       }
       break;
-    case "/yhteystiedot":
-      echo $templates->render('yhteystiedot');
-      break;
-    case "/etusivu":
-      echo $templates->render('etusivu');
-      break;
     case "/maksu":
       echo $templates->render('maksu');
+      break;
+    case "/ehdot":
+        echo $templates->render('ehdot');
+        break;
+    case "/yhteystiedot":
+      echo $templates->render('yhteystiedot');
       break;
     case "/yritys":
       echo $templates->render('yritys');
       break;
-      case "/ehdot":
-        echo $templates->render('ehdot');
-        break;
     default:
       echo $templates->render('notfound');
   }    

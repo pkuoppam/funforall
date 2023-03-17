@@ -8,7 +8,7 @@
    <p>Haluatko järjestää lapsille ikimuistoiset syntymäpäiväjuhlat?
       Mahtavat pomppulinnamme ovat takuuvarma hittituote jokaiseen juhlaan.<br>
       Sumopuvut ovat mahtava ohjelmanumero aikuisille, ja ne sopivat syntymäpäiville,
-      polttareihin,illanistujaisiin tai vaikka yrityksen virkistyspäivään.<br> 
+      polttareihin,illanistujaisiin tai vaikka yrityksen virkistyspäivään.
       Hauskaa riittää niin painijoilla kuin katsojillakin!<br>
       Meiltä löytyy siis vapaa ajan välineitä kaiken ikäisille.<br><br>
       Tutustu tuotteisiimme tai ota yhtettä ja kysy lisää!
