@@ -1,4 +1,4 @@
-<?php $this->layout('template', ['title' => 'etusivu']) ?>
+<?php $this->layout('template', ['title' => 'Etusivu']) ?>
 
 
 
@@ -19,12 +19,4 @@
    </p>
 </div>
 
-  <!-- <div class="kuva">
-   <img src="<?=BASEURL."/images/jalkapallo.jpg"?>" alt="Etusivu">			
-</div>-->
-
-
-  <!-- <div class="info">
-  Jos sinulla ei ole vielä tunnuksia, niin voit luoda ne <a href="lisaa_tili">täällä</a>.<br>
   
-</div>-->

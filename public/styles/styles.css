@@ -35,17 +35,6 @@ header {
 }
 
 
-/*header h1 {
-  font-size: 3rem;
-  font-weight: normal;
-  margin-left: 0.5rem;
-}
-
-header a {
-  color: #000;
-  text-decoration: none;
-}*/
-
 header a img {
   
   margin-left: 0.1em;
@@ -83,8 +72,8 @@ section h1 {
 section h2 {
   text-align: center;
   font-size:medium;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 section a {
@@ -106,22 +95,7 @@ footer {
     text-align: center;
     color: #6c6c77;
     
-
 }
-
-/*.laitteet > div {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-/*.laitteet > div > div:nth-child(3) {
-  text-align: right;
-}
-
-/*.laitteet > div {
-  display: flex;
-  justify-content: space-between;
-}*/
 
 .laitteet > div {
   display: flex;
@@ -197,12 +171,8 @@ input[type=submit] {
   margin-top: 1rem;
 }
 
-.button {
-  text-decoration: none;
-  color: #111111;
-}
 
-.button2 {
+.button {
 
   background-color: #4f88b6;
   color: #fff;
@@ -218,7 +188,4 @@ input[type=submit] {
   font-size: smaller;
 }
 
-.profile2 {
 
-  float: right;
-}

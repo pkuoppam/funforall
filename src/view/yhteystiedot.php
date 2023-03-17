@@ -1,4 +1,4 @@
-<?php $this->layout('template', ['title' => '']) ?>
+<?php $this->layout('template', ['title' => 'Yhteystiedot']) ?>
 
 <h1>Yhteystiedot</h1>
 

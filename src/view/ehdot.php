@@ -1,4 +1,4 @@
-<?php $this->layout('template', ['title' => 'sopimusehdot']) ?>
+<?php $this->layout('template', ['title' => 'Sopimusehdot']) ?>
 
 <h1>Sopimusehdot</h1>
 
@@ -32,10 +32,5 @@ vuokranantaja voi periä lisävuokraa palautus- tai löytöhetkeen saakka.
    Asiakas huolehtii kuljetuksesta ja palautuksesta sovittuna ajankohtana.
    Palautuksen viivästyksestä veloitetaan kaksinkertainen vuorokausivuokra 
    ylimeneviltä vuorokausilta. Asiakas on vastuullinen korvaamaan rikkoutuneen tai kadonneen laitteen.
-   Vuokraaja hyväksyy, varausvahvistuksen sähköpostiinsa saatuaan ymmärtäneensä ja hyväksyneensä nämä vuokrausehdot.
-
-
-
-
-
+   Varkaus tai vahinkotapauksissa yhteys vuokranantajaan välittömästi.
 </p>

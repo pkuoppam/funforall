@@ -8,7 +8,7 @@
   <body> 
   <header>
     <div><a href="<?=BASEURL."/etusivu"?>"><img src="<?=BASEURL."/images/logo.jpg"?>" alt="Etusivu"></a></div>
-    <!--<h1>Fun For All</h1>-->
+
     <div class="profile1">
         <?php
           if (isset($_SESSION['user'])) {
@@ -32,10 +32,6 @@
             echo "<div><a href='kirjaudu'>Kirjaudu</a></div>";
           }
         ?>
-        
-        
-
-
   </nav>
     <section>
       <?=$this->section('content')?>

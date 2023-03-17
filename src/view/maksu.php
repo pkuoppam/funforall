@@ -1,20 +1,15 @@
-<?php $this->layout('template', ['title' => 'maksu']) ?>
+<?php $this->layout('template', ['title' => 'Maksutavat']) ?>
 
-<h1>Maksutavat:</h1>
+<h1>Maksutavat</h1>
 
-
-<div class='maksu'>
 
 <p>Käteinen<br>
    Tilisiirto<br>
    MobilePay<br>
    ApplePay<br>
    GooglePay<br>
-   Smartum sovellukse<br>
-   Epassi sovellus<br></p>
-
-
-   </div>
-
+   Smartum sovellus<br>
+   Epassi sovellus<br>
+</p>
 
 

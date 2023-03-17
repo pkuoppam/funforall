@@ -1,4 +1,4 @@
-<?php $this->layout('template', ['title' => 'yritys']) ?>
+<?php $this->layout('template', ['title' => 'Meistä']) ?>
 
 <h1>Tietoa meistä</h1>
 
@@ -10,6 +10,4 @@
    valikoimaa säännöllisesti. Tarkkaile sivujamme niin pysyt ajan tasalla
    uusista laitteista ja mielellään kuulemme, jos haluaisit jotain laitteita
    vuokrattavaksi. 
-   
-
- </p>
+</p>

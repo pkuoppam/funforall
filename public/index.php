@@ -30,8 +30,6 @@
     case '/':
       echo $templates->render('etusivu');
       break;
-    
-    
     case '/laitteet':
     require_once MODEL_DIR . 'laite.php';
       $laitteet = haeLaitteet();
